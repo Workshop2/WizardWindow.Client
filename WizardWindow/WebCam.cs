@@ -1,56 +1,60 @@
-﻿using WebCam_Capture;
+﻿using System.Windows.Forms;
+using WebCam_Capture;
 
 namespace WizardWindow
 {
-    //Design by Pongsakorn Poosankam
-    class WebCam
+    public class WebCam
     {
-        private WebCamCapture webcam;
-        private System.Windows.Forms.PictureBox _FrameImage;
-        private int FrameNumber = 30;
-        public void InitializeWebCam(ref System.Windows.Forms.PictureBox ImageControl)
+        private readonly WebCamCapture _webcam;
+        private readonly PictureBox _frameImage;
+        private const int FrameNumber = 30;
+
+
+        public WebCam(PictureBox imageControl)
         {
-            webcam = new WebCamCapture();
-            webcam.FrameNumber = ((ulong)(0ul));
-            webcam.TimeToCapture_milliseconds = FrameNumber;
-            webcam.ImageCaptured += new WebCamCapture.WebCamEventHandler(webcam_ImageCaptured);
-            _FrameImage = ImageControl;
+            _webcam = new WebCamCapture
+            {
+                FrameNumber = 0ul, 
+                TimeToCapture_milliseconds = FrameNumber,
+            };
+
+            _webcam.ImageCaptured += webcam_ImageCaptured;
+            _frameImage = imageControl;
         }
 
-        void webcam_ImageCaptured(object source, WebcamEventArgs e)
+        private void webcam_ImageCaptured(object source, WebcamEventArgs e)
         {
-            _FrameImage.Image = e.WebCamImage;
+            _frameImage.Image = e.WebCamImage;
         }
 
         public void Start()
         {
-            webcam.TimeToCapture_milliseconds = FrameNumber;
-            webcam.Start(0);
+            _webcam.TimeToCapture_milliseconds = FrameNumber;
+            _webcam.Start(0);
         }
 
         public void Stop()
         {
-            webcam.Stop();
+            _webcam.Stop();
         }
 
         public void Continue()
         {
             // change the capture time frame
-            webcam.TimeToCapture_milliseconds = FrameNumber;
+            _webcam.TimeToCapture_milliseconds = FrameNumber;
 
             // resume the video capture from the stop
-            webcam.Start(this.webcam.FrameNumber);
+            _webcam.Start(_webcam.FrameNumber);
         }
 
         public void ResolutionSetting()
         {
-            webcam.Config();
+            _webcam.Config();
         }
 
         public void AdvanceSetting()
         {
-            webcam.Config2();
+            _webcam.Config2();
         }
-
     }
 }
