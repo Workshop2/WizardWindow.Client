@@ -7,7 +7,7 @@ namespace WizardWindow
     {
         private readonly WebCamCapture _webcam;
         private readonly PictureBox _frameImage;
-        private const int FrameNumber = 30;
+        private const int FrameNumber = 1;
 
 
         public WebCam(PictureBox imageControl)
@@ -31,20 +31,12 @@ namespace WizardWindow
         {
             _webcam.TimeToCapture_milliseconds = FrameNumber;
             _webcam.Start(0);
+            _webcam.Start(0);
         }
 
         public void Stop()
         {
             _webcam.Stop();
-        }
-
-        public void Continue()
-        {
-            // change the capture time frame
-            _webcam.TimeToCapture_milliseconds = FrameNumber;
-
-            // resume the video capture from the stop
-            _webcam.Start(_webcam.FrameNumber);
         }
 
         public void ResolutionSetting()

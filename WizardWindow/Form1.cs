@@ -15,7 +15,6 @@ namespace WizardWindow
         {
             _webcam = new WebCam(imgVideo);
             _webcam.Start();
-            _webcam.Continue();
         }
     }
 }
