@@ -7,9 +7,8 @@ namespace WizardWindow
     {
         private readonly WebCamCapture _webcam;
         private readonly PictureBox _frameImage;
-        private const int FrameNumber = 1;
-
-
+        private const int FrameNumber = 60;
+        
         public WebCam(PictureBox imageControl)
         {
             _webcam = new WebCamCapture

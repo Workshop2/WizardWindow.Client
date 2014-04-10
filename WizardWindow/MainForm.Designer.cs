@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace WizardWindow
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -50,13 +50,13 @@ namespace WizardWindow
             this.imgVideo.TabIndex = 0;
             this.imgVideo.TabStop = false;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 362);
             this.Controls.Add(this.imgVideo);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "WinForm C# WebCam";
             this.Load += new System.EventHandler(this.mainWinForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgVideo)).EndInit();
