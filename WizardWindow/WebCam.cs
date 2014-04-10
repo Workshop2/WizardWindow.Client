@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using WebCam_Capture;
 
 namespace WizardWindow
@@ -33,19 +34,9 @@ namespace WizardWindow
             _webcam.Start(0);
         }
 
-        public void Stop()
+        public Image GetPhoto()
         {
-            _webcam.Stop();
-        }
-
-        public void ResolutionSetting()
-        {
-            _webcam.Config();
-        }
-
-        public void AdvanceSetting()
-        {
-            _webcam.Config2();
+            return _frameImage.Image;
         }
     }
 }
