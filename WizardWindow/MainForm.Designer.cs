@@ -38,6 +38,7 @@ namespace WizardWindow
         private void InitializeComponent()
         {
             this.imgVideo = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgVideo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,11 +52,21 @@ namespace WizardWindow
             this.imgVideo.TabIndex = 0;
             this.imgVideo.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(885, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(19, 22);
+            this.button1.TabIndex = 1;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(904, 623);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.imgVideo);
             this.Name = "MainForm";
             this.Text = "WinForm C# WebCam";
@@ -68,6 +79,7 @@ namespace WizardWindow
         #endregion
 
         private System.Windows.Forms.PictureBox imgVideo;
+        private Button button1;
     }
 }
 
