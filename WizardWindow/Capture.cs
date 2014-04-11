@@ -1,27 +1,47 @@
 ﻿using System;
 using System.Drawing;
-using System.Timers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace WizardWindow
 {
     public class Capture
     {
+        private readonly TimeSpan _timeToCapture;
         private readonly WebCam _camera;
-        private readonly Transporter _transporter;
+        private readonly ITransporter _transporter;
 
-        public Capture(TimeSpan timeToCapture, WebCam camera, Transporter transporter)
+        public Capture(TimeSpan timeToCapture, WebCam camera, ITransporter transporter)
         {
+            _timeToCapture = timeToCapture;
             _camera = camera;
             _transporter = transporter;
-            var timer = new Timer { Interval = timeToCapture.TotalMilliseconds };
-            timer.Elapsed += timer_Elapsed;
-            timer.Start();
         }
 
-        private void timer_Elapsed(object sender, ElapsedEventArgs e)
+        public void Start()
+        {
+            _camera.Start();
+            Reset();
+        }
+
+        private void Reset()
+        {
+            Task.Factory.StartNew(Tick)
+                .ContinueWith(task =>
+                {
+                    Thread.Sleep(_timeToCapture);
+                    Reset();
+                });
+        }
+
+        private void Tick()
         {
             Image currentImage = _camera.GetPhoto();
-            _transporter.Send(currentImage);
+
+            if (currentImage != null)
+            {
+                _transporter.Send(currentImage);
+            }
         }
     }
 }

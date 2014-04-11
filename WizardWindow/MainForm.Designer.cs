@@ -44,9 +44,10 @@ namespace WizardWindow
             // imgVideo
             // 
             this.imgVideo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgVideo.Location = new System.Drawing.Point(9, 4);
+            this.imgVideo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgVideo.Location = new System.Drawing.Point(0, 0);
             this.imgVideo.Name = "imgVideo";
-            this.imgVideo.Size = new System.Drawing.Size(571, 318);
+            this.imgVideo.Size = new System.Drawing.Size(584, 362);
             this.imgVideo.TabIndex = 0;
             this.imgVideo.TabStop = false;
             // 

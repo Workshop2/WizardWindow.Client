@@ -10,11 +10,15 @@ namespace WizardWindow
             InitializeComponent();
         }
 
-        WebCam _webcam;
         private void mainWinForm_Load(object sender, EventArgs e)
         {
-            _webcam = new WebCam(imgVideo);
-            _webcam.Start();
+            TimeSpan timeToSend = TimeSpan.FromSeconds(1);
+
+            var webcam = new WebCam(imgVideo);
+            ITransporter transporter = new TestTransporter();
+
+            var capture = new Capture(timeToSend, webcam, transporter);
+            capture.Start();
         }
     }
 }

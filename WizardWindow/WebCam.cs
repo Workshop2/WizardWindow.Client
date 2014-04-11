@@ -8,6 +8,7 @@ namespace WizardWindow
     {
         private readonly WebCamCapture _webcam;
         private readonly PictureBox _frameImage;
+        private Image _image;
         private const int FrameNumber = 60;
         
         public WebCam(PictureBox imageControl)
@@ -16,6 +17,14 @@ namespace WizardWindow
             {
                 FrameNumber = 0ul, 
                 TimeToCapture_milliseconds = FrameNumber,
+                Width = 640,
+                Height = 480,
+                ClientSize = new Size(640, 480),
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                AutoSize = true,
+                Size = new Size(640, 480),
+                MinimumSize = new Size(640, 480),
+                AutoScrollMinSize = new Size(640, 480)
             };
 
             _webcam.ImageCaptured += webcam_ImageCaptured;
@@ -24,6 +33,7 @@ namespace WizardWindow
 
         private void webcam_ImageCaptured(object source, WebcamEventArgs e)
         {
+            _image = e.WebCamImage;
             _frameImage.Image = e.WebCamImage;
         }
 
@@ -36,7 +46,7 @@ namespace WizardWindow
 
         public Image GetPhoto()
         {
-            return _frameImage.Image;
+            return _image;
         }
     }
 }
