@@ -2,7 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace WizardWindow
+namespace WizardWindow.Transport
 {
     public class TestTransporter : ITransporter
     {

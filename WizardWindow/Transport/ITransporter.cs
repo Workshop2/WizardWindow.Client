@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace WizardWindow
+namespace WizardWindow.Transport
 {
     public interface ITransporter
     {

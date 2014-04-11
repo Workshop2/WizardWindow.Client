@@ -47,7 +47,7 @@ namespace WizardWindow
             this.imgVideo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgVideo.Location = new System.Drawing.Point(0, 0);
             this.imgVideo.Name = "imgVideo";
-            this.imgVideo.Size = new System.Drawing.Size(584, 362);
+            this.imgVideo.Size = new System.Drawing.Size(904, 623);
             this.imgVideo.TabIndex = 0;
             this.imgVideo.TabStop = false;
             // 
@@ -55,7 +55,7 @@ namespace WizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 362);
+            this.ClientSize = new System.Drawing.Size(904, 623);
             this.Controls.Add(this.imgVideo);
             this.Name = "MainForm";
             this.Text = "WinForm C# WebCam";
